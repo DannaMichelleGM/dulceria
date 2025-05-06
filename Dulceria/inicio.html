@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulceria Del Ángel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ff7fe8;
+        }
+
+        header {
+            background-color: #fff698;
+            background-color: #fff36e;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        /* Estilo del logo */
+        .logo {
+            position: absolute;
+            top: 0px;
+            left: 10px;
+            height: 120px; /* Ajusta el tamaño del logo */
+        }
+
+        header h1 {
+            margin: 0;
+            color: #333;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .search-bar {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 60%;
+            max-width: 500px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .login-form {
+            background-color: #fff;
+            padding: 30px;
+            width: 300px;
+            margin: 50px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #e74c3c;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-form button:hover {
+            background-color: #c0392b;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Efecto de hover */
+        .product:hover {
+            transform: translateY(-10px); /* Levanta el producto hacia arriba */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Agranda la sombra */
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .product h2 {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .product p {
+            font-size: 16px;
+            color: #777;
+        }
+
+        .product .price {
+            font-size: 20px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- Logo -->
+    <img src="imagenes/dulceria.logo.png" alt="Logo" class="logo"> <!-- Sustituir con la URL de tu logo -->
+
+    <h1>Dulceria Del Ángel</h1>
+    <nav>
+        <a href="inicio.html">Inicio</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="productos.html">Productos</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<!-- Formulario de login -->
+<div id="login-form" class="login-form" style="display:none;">
+    <h2>Iniciar Sesión</h2>
+    <form action="#" method="POST">
+        <input type="text" id="username" placeholder="Nombre de usuario" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button type="submit">Entrar</button>
+    </form>
+</div>
+
+<!-- Productos -->
+<section class="product-grid">
+    <div class="product">
+        <img src="imagenes/waffer.png" alt="Producto 1">
+        <h2>Galleta Waffer</h2>
+        <p>Deliciosa galleta de fresa o vainilla.</p>
+        <div class="price">$20.00</div>
+    </div>
+    <div class="product">
+        <img src="imagenes/bianchi.png" alt="Producto 2">
+        <h2>Bombón Bianchi Chocolate</h2>
+        <p>Delicioso bombón cubierto de chocolate.</p>
+        <div class="price">$77.00</div>
+    </div>
+    <div class="product">
+        <img src="imagenes/posh.png" alt="Producto 3">
+        <h2>Chicle POSH!</h2>
+        <p>Delicioso chicle sabor banana ó menta.</p>
+        <div class="price">$200.00</div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Dulceria Del Ángel. Todos los derechos reservados.</p>
+  
+</footer>
+
+</body>
+</html>
+

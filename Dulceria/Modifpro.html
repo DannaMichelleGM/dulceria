@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestión de Productos - Dulceria Del Ángel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ff7fe8;
+    }
+
+    header {
+      background-color: #fff36e;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      position: absolute;
+      top: 0px;
+      left: 10px;
+      height: 120px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .form-container, .table-container {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 1000px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container input {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .form-container button {
+      background-color: #e74c3c;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .form-container button:hover {
+      background-color: #c0392b;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #fff698;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .edit-btn, .delete-btn {
+      background-color: #ffb347;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 2px;
+    }
+
+    .delete-btn {
+      background-color: #ff5e57;
+      color: white;
+    }
+
+    /* Estilos para los modales */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background-color: #fff698;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content button {
+      padding: 10px 15px;
+      border: none;
+      background-color: #e74c3c;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 10px;
+    }
+
+    .modal-content button:hover {
+      background-color: #c0392b;
+    }
+
+    .modal-content input {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <h1>Dulceria Del Ángel</h1>
+        <nav>
+            <a href="inicio.html">Inicio</a>
+            <a href="contacto.html">Modificar productos</a>
+            <a href="productos.html">Busqueda</a>
+            <a href="login.html">Stock</a>
+        </nav>
+    </header>
+
+<h1>Gestión de Productos</h1>
+
+<div class="form-container">
+  <input type="text" id="nombre" placeholder="Nombre del producto">
+  <input type="number" id="precio" placeholder="Precio">
+  <input type="text" id="imagen" placeholder="URL de la imagen">
+  <input type="text" id="cantidad" placeholder="Cantidad">
+  <button onclick="agregarProducto()">Agregar Producto</button>
+</div>
+
+<div class="table-container">
+    <table id="tablaProductos">
+      <thead>
+        <tr>
+          <th>Cantidad</th>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Modificaciones</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+<!-- Modal de Confirmación de Borrado -->
+<div id="modalBorrar" class="modal">
+  <div class="modal-content">
+    <p id="mensajeBorrar">¿Seguro que deseas eliminar este producto?</p>
+    <button onclick="confirmarBorrar()">Sí, Borrar</button>
+    <button onclick="cerrarModal('modalBorrar')">Cancelar</button>
+  </div>
+</div>
+
+<!-- Modal de Edición -->
+<div id="modalEditar" class="modal">
+  <div class="modal-content">
+    <h3>Editar Producto</h3>
+    <input id="editNombre" placeholder="Nuevo nombre">
+    <input id="editPrecio" type="number" placeholder="Nuevo precio">
+    <input id="editImagen" placeholder="Nueva URL de imagen">
+    <input id="editCantidad" type="number" placeholder="Nueva cantidad">
+    <button onclick="guardarEdicion()">Guardar Cambios</button>
+    <button onclick="cerrarModal('modalEditar')">Cancelar</button>
+  </div>
+</div>
+
+<script>
+    let productos = JSON.parse(localStorage.getItem('productos')) || [];
+    let productoAEliminar = null;
+    let productoAEditar = null;
+
+    function renderizarTabla() {
+      const tbody = document.querySelector('#tablaProductos tbody');
+      tbody.innerHTML = '';
+      productos.forEach((prod, i) => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${prod.cantidad}</td>
+            <td><img src="${prod.imagen}" alt="${prod.nombre}" width="50"></td>
+            <td>${prod.nombre}</td>
+            <td>$${parseFloat(prod.precio).toFixed(2)}</td>
+            <td>
+              <button class="edit-btn" onclick="abrirEditarModal(${i})">Editar</button>
+              <button class="delete-btn" onclick="abrirBorrarModal(${i})">Borrar</button>
+            </td>
+          </tr>
+        `;
+      });
+      localStorage.setItem('productos', JSON.stringify(productos));
+    }
+
+    function agregarProducto() {
+      const nombre = document.getElementById('nombre').value;
+      const precio = document.getElementById('precio').value;
+      const imagen = document.getElementById('imagen').value;
+      const cantidad = document.getElementById('cantidad').value;
+      if (nombre && precio && imagen && cantidad) {
+        productos.push({ nombre, precio, imagen, cantidad });
+        renderizarTabla();
+        document.getElementById('nombre').value = '';
+        document.getElementById('precio').value = '';
+        document.getElementById('imagen').value = '';
+        document.getElementById('cantidad').value = '';
+      } else {
+        alert('Por favor, completa todos los campos.');
+      }
+    }
+
+    function abrirBorrarModal(index) {
+      productoAEliminar = index;
+      document.getElementById('modalBorrar').classList.add('show');
+    }
+
+    function confirmarBorrar() {
+      productos.splice(productoAEliminar, 1);
+      cerrarModal('modalBorrar');
+      renderizarTabla();
+    }
+
+    function abrirEditarModal(index) {
+      productoAEditar = index;
+      const producto = productos[index];
+      document.getElementById('editNombre').value = producto.nombre;
+      document.getElementById('editPrecio').value = producto.precio;
+      document.getElementById('editImagen').value = producto.imagen;
+      document.getElementById('editCantidad').value = producto.cantidad;
+      document.getElementById('modalEditar').classList.add('show');
+    }
+
+    function guardarEdicion() {
+      const nombre = document.getElementById('editNombre').value;
+      const precio = document.getElementById('editPrecio').value;
+      const imagen = document.getElementById('editImagen').value;
+      const cantidad = document.getElementById('editCantidad').value;
+
+      if (nombre && precio && imagen && cantidad) {
+        productos[productoAEditar] = { nombre, precio, imagen, cantidad };
+        cerrarModal('modalEditar');
+        renderizarTabla();
+      } else {
+        alert("Completa todos los campos.");
+      }
+    }
+
+    function cerrarModal(modalId) {
+      document.getElementById(modalId).classList.remove('show');
+    }
+
+    renderizarTabla();
+</script>
+
+</body>
+</html>
+

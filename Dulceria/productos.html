@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Dulcería Del Ángel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ff7fe8;
+        }
+
+        header {
+            background-color: #fff36e;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            position: absolute;
+            top: 0px;
+            left: 10px;
+            height: 120px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #333;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .catalogo {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .catalogo h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .product {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .product h3 {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .product p {
+            font-size: 14px;
+            color: #666;
+            margin: 0 0 10px;
+        }
+
+        .price {
+            color: #e74c3c;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="imagenes/dulceria.logo.png" alt="Logo" class="logo">
+    <h1>Dulceria Del Ángel</h1>
+    <nav>
+        <a href="inicio.html">Inicio</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="productos.html">Productos</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<main class="catalogo">
+    <h2>Catálogo de Productos</h2>
+    <div class="product-grid">
+        <div class="product">
+            <img src="imagenes/waffer.png" alt="Galleta Waffer">
+            <h3>Galleta Waffer</h3>
+            <p>Fresa o vainilla.</p>
+            <div class="price">$20.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/bianchi.png" alt="Bianchi Chocolate">
+            <h3>Bombón Bianchi</h3>
+            <p>Con cobertura de chocolate.</p>
+            <div class="price">$77.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/posh.png" alt="Chicle POSH">
+            <h3>Chicle POSH!</h3>
+            <p>Banana o menta.</p>
+            <div class="price">$200.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/waffer.png" alt="Galleta Waffer">
+            <h3>Galleta Waffer</h3>
+            <p>Fresa o vainilla.</p>
+            <div class="price">$20.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/bianchi.png" alt="Bianchi Chocolate">
+            <h3>Bombón Bianchi</h3>
+            <p>Con cobertura de chocolate.</p>
+            <div class="price">$77.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/posh.png" alt="Chicle POSH">
+            <h3>Chicle POSH!</h3>
+            <p>Banana o menta.</p>
+            <div class="price">$200.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/waffer.png" alt="Galleta Waffer">
+            <h3>Galleta Waffer</h3>
+            <p>Fresa o vainilla.</p>
+            <div class="price">$20.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/bianchi.png" alt="Bianchi Chocolate">
+            <h3>Bombón Bianchi</h3>
+            <p>Con cobertura de chocolate.</p>
+            <div class="price">$77.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/posh.png" alt="Chicle POSH">
+            <h3>Chicle POSH!</h3>
+            <p>Banana o menta.</p>
+            <div class="price">$200.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/waffer.png" alt="Galleta Waffer">
+            <h3>Galleta Waffer</h3>
+            <p>Fresa o vainilla.</p>
+            <div class="price">$20.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/bianchi.png" alt="Bianchi Chocolate">
+            <h3>Bombón Bianchi</h3>
+            <p>Con cobertura de chocolate.</p>
+            <div class="price">$77.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/posh.png" alt="Chicle POSH">
+            <h3>Chicle POSH!</h3>
+            <p>Banana o menta.</p>
+            <div class="price">$200.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/waffer.png" alt="Galleta Waffer">
+            <h3>Galleta Waffer</h3>
+            <p>Fresa o vainilla.</p>
+            <div class="price">$20.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/bianchi.png" alt="Bianchi Chocolate">
+            <h3>Bombón Bianchi</h3>
+            <p>Con cobertura de chocolate.</p>
+            <div class="price">$77.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/posh.png" alt="Chicle POSH">
+            <h3>Chicle POSH!</h3>
+            <p>Banana o menta.</p>
+            <div class="price">$200.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/waffer.png" alt="Galleta Waffer">
+            <h3>Galleta Waffer</h3>
+            <p>Fresa o vainilla.</p>
+            <div class="price">$20.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/bianchi.png" alt="Bianchi Chocolate">
+            <h3>Bombón Bianchi</h3>
+            <p>Con cobertura de chocolate.</p>
+            <div class="price">$77.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/posh.png" alt="Chicle POSH">
+            <h3>Chicle POSH!</h3>
+            <p>Banana o menta.</p>
+            <div class="price">$200.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/waffer.png" alt="Galleta Waffer">
+            <h3>Galleta Waffer</h3>
+            <p>Fresa o vainilla.</p>
+            <div class="price">$20.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/bianchi.png" alt="Bianchi Chocolate">
+            <h3>Bombón Bianchi</h3>
+            <p>Con cobertura de chocolate.</p>
+            <div class="price">$77.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/posh.png" alt="Chicle POSH">
+            <h3>Chicle POSH!</h3>
+            <p>Banana o menta.</p>
+            <div class="price">$200.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/waffer.png" alt="Galleta Waffer">
+            <h3>Galleta Waffer</h3>
+            <p>Fresa o vainilla.</p>
+            <div class="price">$20.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/bianchi.png" alt="Bianchi Chocolate">
+            <h3>Bombón Bianchi</h3>
+            <p>Con cobertura de chocolate.</p>
+            <div class="price">$77.00</div>
+        </div>
+        <div class="product">
+            <img src="imagenes/posh.png" alt="Chicle POSH">
+            <h3>Chicle POSH!</h3>
+            <p>Banana o menta.</p>
+            <div class="price">$200.00</div>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 Dulcería Del Ángel. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>
