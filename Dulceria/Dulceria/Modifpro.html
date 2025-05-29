@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestión de Productos - Dulcería Del Ángel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ff7fe8;
+    }
+
+    header {
+      background-color: #fff36e;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      position: absolute;
+      top: 0px;
+      left: 10px;
+      height: 120px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .form-container, .table-container {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 1000px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container input {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .form-container button {
+      background-color: #e74c3c;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .form-container button:hover {
+      background-color: #c0392b;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #fff698;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .edit-btn, .delete-btn {
+      background-color: #ffb347;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 2px;
+    }
+
+    .delete-btn {
+      background-color: #ff5e57;
+      color: white;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background-color: #fff698;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content button {
+      padding: 10px 15px;
+      border: none;
+      background-color: #e74c3c;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 10px;
+    }
+
+    .modal-content button:hover {
+      background-color: #c0392b;
+    }
+
+    .modal-content input {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dulcería Del Ángel</h1>
+    <nav>
+      <a href="inicioadmi.html">Inicio</a>
+      <a href="buscador.php">Búsqueda</a>
+      <a href="stock.php">Stock</a>
+    </nav>
+  </header>
+
+  <h1>Gestión de Productos</h1>
+
+  <div class="form-container">
+    <input type="number" id="id_producto" placeholder="ID del producto">
+    <input type="text" id="descripcion" placeholder="Descripción del producto">
+    <input type="number" id="precio" placeholder="Precio">
+    <input type="text" id="imagen_url" placeholder="URL de la imagen">
+    <input type="text" id="tipo_producto" placeholder="Tipo de producto">
+    <input type="number" id="existencia" placeholder="Existencia">
+    <button onclick="agregarProducto()">Agregar Producto</button>
+  </div>
+
+ 
+<div class="form-container">
+  <h3>Eliminar producto por ID</h3>
+  <input type="number" id="idEliminar" placeholder="ID del producto a eliminar">
+  <button onclick="eliminarProductoPorId()">Eliminar por ID</button>
+</div>
+
+
+
+  <div id="modalBorrar" class="modal">
+    <div class="modal-content">
+      <p id="mensajeBorrar">¿Seguro que deseas eliminar este producto?</p>
+      <button onclick="confirmarBorrar()">Sí, Borrar</button>
+      <button onclick="cerrarModal('modalBorrar')">Cancelar</button>
+    </div>
+  </div>
+
+  <script>
+    let productos = [];
+    let productoAEliminar = null;
+
+    function renderizarTabla() {
+      const tbody = document.querySelector('#tablaProductos tbody');
+      tbody.innerHTML = '';
+      productos.forEach((prod, i) => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${prod.existencia}</td>
+            <td><img src="${prod.imagen_url}" alt="${prod.descripcion}" width="50"></td>
+            <td>${prod.descripcion}</td>
+            <td>$${parseFloat(prod.precio).toFixed(2)}</td>
+            <td>
+              <button class="edit-btn" onclick="abrirEditarModal(${i})">Editar</button>
+              <button class="delete-btn" onclick="abrirBorrarModal(${i})">Borrar</button>
+            </td>
+          </tr>
+        `;
+      });
+    }
+
+    function cargarProductos() {
+      fetch('obtener_productos.php')
+        .then(response => response.json())
+        .then(data => {
+          productos = data;
+          renderizarTabla();
+        })
+        .catch(error => console.error("Error al obtener productos:", error));
+    }
+
+    function agregarProducto() {
+      const id_producto = document.getElementById('id_producto').value;
+      const descripcion = document.getElementById('descripcion').value;
+      const precio = document.getElementById('precio').value;
+      const imagen_url = document.getElementById('imagen_url').value;
+      const tipo_producto = document.getElementById('tipo_producto').value;
+      const existencia = document.getElementById('existencia').value;
+
+      if (descripcion && precio && imagen_url && tipo_producto && existencia) {
+        fetch('insertar_producto.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ id_producto, descripcion, precio, imagen_url, tipo_producto, existencia })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+
+            alert("Producto agregado correctamente.");
+            document.getElementById('id_producto').value = '';
+            document.getElementById('descripcion').value = '';
+            document.getElementById('precio').value = '';
+            document.getElementById('imagen_url').value = '';
+            document.getElementById('tipo_producto').value = '';
+            document.getElementById('existencia').value = '';
+            cargarProductos();
+          } else {
+            alert("Error al insertar: " + data.error);
+          }
+        })
+        .catch(error => {
+          console.error('Error de red o servidor:', error);
+        });
+      } else {
+        alert('Por favor, completa todos los campos.');
+      }
+    }
+
+    function eliminarProductoPorId() {
+  const id = document.getElementById('idEliminar').value;
+
+  if (!id) {
+    alert("Por favor, ingresa un ID válido.");
+    return;
+  }
+
+  if (!confirm("¿Estás seguro de eliminar el producto con ID " + id + "?")) {
+    return;
+  }
+
+  fetch('eliminar_producto.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id_producto: id })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert("Producto eliminado correctamente.");
+      document.getElementById('idEliminar').value = '';
+      cargarProductos();
+    } else {
+      alert("Error al eliminar: " + data.error);
+    }
+  })
+  .catch(error => {
+    console.error('Error en la solicitud:', error);
+  });
+}
+
+
+    window.onload = cargarProductos;
+  </script>
+</body>
+</html>
+

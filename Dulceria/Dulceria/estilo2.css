@@ -1,0 +1,184 @@
+       * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+       
+       h1 {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 10px;
+    
+}
+
+ body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ff7fe8;
+        }
+
+
+
+.barra-amarilla {
+    background-color: #fff36e;
+    height: 120px;
+    width: 100%;
+    position: relative;
+    top: 0px;
+   
+}
+       nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+       .logo {
+            position: absolute;
+            top: 0;
+            left: 1100px;
+            height: 120px; /* Ajusta el tamaño del logo */
+        }
+
+        .producto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .producto-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 320px;
+            padding: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--pico-muted-border-color, #ccc);
+            border-radius: var(--pico-border-radius, 0.5rem);
+            box-shadow: var(--pico-card-box-shadow, 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1));
+            text-align: center;
+            background: var(--pico-card-background-color, #fff);
+        }
+
+        .producto-card img {
+            max-width: 100px;
+            max-height: 100px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+
+        .producto-card h3,
+        .producto-card p,
+        .producto-card label {
+            font-size: 0.9rem;
+            margin: 0.25rem 0;
+            overflow-wrap: break-word;
+        }
+
+       input[type="number"] {
+    width: 80px;
+    padding: 0.4rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+
+        table {
+            width: 100%;
+            margin-top: 2rem;
+        }
+   
+   
+   
+   button {
+    display: block;
+    margin: 0 auto;
+    font-size: 25px;
+  
+    text-align: center;
+    background-color: #ffeb3b;
+    border: none;
+    width: 300px;
+    height: 100px;
+    padding: 12px 20px;
+    font-weight: bold;
+    color: #000000;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+
+       
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.form-container {
+    text-align: center;
+    margin-top: 300px;
+    background-color: #fff36e;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); }
+
+    h2 {
+    color: #0400fa;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+label {
+    color: #000000;
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 0px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 5px;
+}
+
+input[type="submit"] {
+    background-color: #00fcf8;
+    border: none;
+    padding: 0px 0px;
+    font-weight: bold;
+    color: #000;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+input[type="submit"]:hover {
+    background-color: #00eeff;
+}
+
+.mensaje {
+    color: #e91e63;
+    font-weight: bold;
+    margin-top: 10px;
+}

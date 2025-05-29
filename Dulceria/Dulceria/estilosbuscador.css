@@ -1,0 +1,95 @@
+/* Estilos generales */
+
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ff7fe8;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+form {
+    text-align: center;
+    margin: 20px 0;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 250px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #fff36e;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #d4ac0d;
+}
+
+/* Contenedor de productos en cuadrícula */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0;
+}
+
+/* Tarjeta de producto */
+.producto {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.producto:hover {
+    transform: scale(1.03);
+}
+
+.producto img {
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.producto strong {
+    font-size: 18px;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.producto p {
+    margin: 4px 0;
+    font-size: 15px;
+    color: #555;
+}
+

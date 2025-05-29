@@ -1,0 +1,98 @@
+/* General */
+
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ff7fe8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Títulos */
+h1, h2 {
+    color: #1a1f24;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Formulario de búsqueda */
+form {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    font-size: 16px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Contenedor de productos en cuadrícula */
+ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0;
+    list-style: none;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjeta de producto */
+li {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+li:hover {
+    transform: scale(1.03);
+}
+
+li strong {
+    font-size: 18px;
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 10px;
+}
+
+li img {
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+li p {
+    margin: 5px 0;
+}
